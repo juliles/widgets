@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Widget</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDD94, #FA897B);
+            margin: 0;
+        }
+        #greeting-widget {
+            padding: 20px;
+            background: linear-gradient(135deg, #86E3CE, #CCABD8); /* Degradado */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+            color: #2C3E50; /* Color de texto */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente Comic Sans */
+            font-size: 24px; /* Tamaño de fuente aumentado */
+        }
+        #greeting-top,
+        #greeting-bottom {
+            margin-bottom: 5px; /* Espaciado reducido */
+        }
+    </style>
+</head>
+<body>
+    <div id="greeting-widget">
+        <div id="greeting-top"></div>
+        <h2 id="greeting-message"></h2>
+        <div id="greeting-bottom"></div>
+    </div>
+
+    <script>
+        // Function to get the greeting message based on the time of day
+        function getGreeting() {
+            const currentTime = new Date();
+            const currentHour = currentTime.getHours();
+
+            let greetingTop = '';
+            let greetingBottom = '';
+            let name = 'Julián';
+
+            if (currentHour < 12) {
+                greetingTop = "Buenos días";
+                greetingBottom = `¡${name}!`;
+            } else if (currentHour < 18) {
+                greetingTop = "Buenas tardes";
+                greetingBottom = `¡${name}!`;
+            } else {
+                greetingTop = "Buenas noches";
+                greetingBottom = `¡${name}!`;
+            }
+
+            // Update the greeting messages in the DOM
+            document.getElementById('greeting-top').textContent = greetingTop;
+            document.getElementById('greeting-bottom').textContent = greetingBottom;
+        }
+
+        // Call the getGreeting function when the page loads
+        window.onload = getGreeting;
+    </script>
+</body>
+</html>
